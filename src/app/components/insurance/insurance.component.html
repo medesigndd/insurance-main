@@ -1,0 +1,58 @@
+<div class="main">
+  <div class="container">
+    <h1>คำนวณเบี้ยประกัน</h1>
+    <mat-divider></mat-divider>
+    <form [formGroup]="insuranceForm" (ngSubmit)="onSubmit()">
+      <div class="inline-flex column-gap">
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>วันเดือนปีเกิด</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dob">
+          <mat-hint>YYYY/MM/DD</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>เพศ</mat-label>
+          <mat-select formControlName="genderCd">
+            <mat-option *ngFor="let gender of genders" [value]="gender.code">
+              {{gender.view}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>ชื่อ-นามสกุล</mat-label>
+          <input type="text" matInput formControlName="name"/>
+        </mat-form-field>
+      </div>
+      <div class="inline-flex column-gap">
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>แบบประกัน</mat-label>
+          <mat-select formControlName="planCode">
+            <mat-option *ngFor="let package of packages" [value]="package.code">
+              {{package.view}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>งวดการชำระ</mat-label>
+          <mat-select formControlName="paymentFrequency">
+            <mat-option *ngFor="let paymentFrequency of paymentFrequencys" [value]="paymentFrequency.code">
+              {{paymentFrequency.view}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>เบี้ยประกัน</mat-label>
+          <input type="number" matInput formControlName="premiumPerYear" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="width-100">
+          <mat-label>ทุนประกัน</mat-label>
+          <input type="number" matInput formControlName="saPerYear" />
+        </mat-form-field>
+      </div>
+      <div class="flex-end">
+        <button mat-raised-button class="p-background-color" type="submit" [disabled]="insuranceForm.invalid">คำนวณ</button>
+      </div>
+    </form>
+  </div>
+</div>

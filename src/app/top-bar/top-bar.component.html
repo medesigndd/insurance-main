@@ -1,0 +1,16 @@
+<div class="wrapper-top-bar">
+  <div class="top-bar">
+    <div class="menu-control">
+      <span></span>
+    </div>
+    <div class="login">
+      <span>สวัสดี Admin</span>
+    </div>
+  </div>
+  <div class="menu flex-center">
+    <ul class="flex-center">
+      <li (click)="pageIs('insurance')" [ngClass]="{'selected': page === 'insurance'}"><a routerLink="/insurance" routerLinkActive="active">คำนวณเบี้ยประกัน</a></li>
+    </ul>
+  </div>
+  
+</div>
