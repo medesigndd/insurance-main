@@ -18,9 +18,13 @@ export class InsuranceService {
 
   getProduct(request: object): Observable<[]>{
     const headers = this.authService.getHeaders();
-    const params = {...request};
+    const { ...params } = request;
     return this.http.post<[]>(`${API}/getProduct`, params , headers);
   }
+
+
+
+  
 
 
 
